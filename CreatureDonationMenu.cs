@@ -7,11 +7,11 @@ using StardewValley.Menus;
 
 namespace NatureInTheValley
 {
-	// Token: 0x02000009 RID: 9
+	// Token: 0x0200000A RID: 10
 	public class CreatureDonationMenu : InventoryMenu
 	{
-		// Token: 0x0600007D RID: 125 RVA: 0x0000884C File Offset: 0x00006A4C
-		public CreatureDonationMenu() : base(Game1.viewport.Width / 2 - 384, Game1.viewport.Height / 2, false, null, new InventoryMenu.highlightThisItem(CreatureDonationMenu.CheckDonated), 36, 3, 0, 0, true)
+		// Token: 0x060000AB RID: 171 RVA: 0x00009A10 File Offset: 0x00007C10
+		public CreatureDonationMenu() : base(Game1.viewport.Width / 2 - 384, Game1.viewport.Height / 2, false, null, new InventoryMenu.highlightThisItem(CreatureDonationMenu.CheckDonated), Game1.player.Items.Count, Math.Max(1, Game1.player.Items.Count / 12), 0, 0, true)
 		{
 			base.initializeUpperRightCloseButton();
 			this.exitFunction = delegate()
@@ -22,7 +22,7 @@ namespace NatureInTheValley
 			base.initializeUpperRightCloseButton();
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x000088B8 File Offset: 0x00006AB8
+		// Token: 0x060000AC RID: 172 RVA: 0x00009AA0 File Offset: 0x00007CA0
 		public static void ExitFunction(int d)
 		{
 			switch (d)
@@ -50,20 +50,21 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00008A34 File Offset: 0x00006C34
+		// Token: 0x060000AD RID: 173 RVA: 0x00009C1C File Offset: 0x00007E1C
 		public static bool CheckDonated(Item item)
 		{
 			string text;
 			return item.Category == -81 && item.ItemId.Contains("NatInValley.Creature.") && !Game1.currentLocation.modData.TryGetValue("NatureInTheValley/Donated/" + item.ItemId.Split("NatInValley.Creature.", StringSplitOptions.None)[1], out text);
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x00008A90 File Offset: 0x00006C90
+		// Token: 0x060000AE RID: 174 RVA: 0x00009C78 File Offset: 0x00007E78
 		public override void receiveLeftClick(int x, int y, bool playSound = true)
 		{
 			Item itemAt = base.getItemAt(x, y);
 			if (itemAt == null)
 			{
 				base.exitThisMenu(true);
+				return;
 			}
 			string text;
 			if (!itemAt.ItemId.Contains("NatInValley.Creature.") || Game1.currentLocation.modData.TryGetValue("NatureInTheValley/Donated/" + itemAt.ItemId.Split("NatInValley.Creature.", StringSplitOptions.None)[1], out text))
@@ -87,7 +88,7 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00008BA4 File Offset: 0x00006DA4
+		// Token: 0x060000AF RID: 175 RVA: 0x00009D90 File Offset: 0x00007F90
 		public override void draw(SpriteBatch b)
 		{
 			if (Game1.options.showMenuBackground)
@@ -104,7 +105,7 @@ namespace NatureInTheValley
 			base.drawMouse(b, false, -1);
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00008CC4 File Offset: 0x00006EC4
+		// Token: 0x060000B1 RID: 177 RVA: 0x00009EB0 File Offset: 0x000080B0
 		public int GetRarityCode(string Desc)
 		{
 			if (Desc.Contains(NatureInTheValleyEntry.staticHelper.Translation.Get("Rarity.4")))
@@ -126,7 +127,7 @@ namespace NatureInTheValley
 			return 1;
 		}
 
-		// Token: 0x04000045 RID: 69
+		// Token: 0x0400004D RID: 77
 		private int DonationCompletionType;
 	}
 }

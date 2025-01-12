@@ -8,38 +8,38 @@ using StardewValley;
 
 namespace NatureInTheValley
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x02000008 RID: 8
 	[XmlType("Mods_NatInValeyNet")]
 	[XmlRoot(ElementName = "natInValeyNet", Namespace = "")]
 	[KnownType(typeof(NatInValeyNet))]
 	[XmlInclude(typeof(NatInValeyNet))]
 	public class NatInValeyNet : Tool
 	{
-		// Token: 0x06000064 RID: 100 RVA: 0x0000243A File Offset: 0x0000063A
+		// Token: 0x06000092 RID: 146 RVA: 0x00002484 File Offset: 0x00000684
 		protected override Item GetOneNew()
 		{
 			return new NatInValeyNet();
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00002441 File Offset: 0x00000641
+		// Token: 0x06000093 RID: 147 RVA: 0x0000248B File Offset: 0x0000068B
 		protected override string loadDisplayName()
 		{
 			return this.helper.Translation.Get("NetName");
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x0000245D File Offset: 0x0000065D
+		// Token: 0x06000094 RID: 148 RVA: 0x000024A7 File Offset: 0x000006A7
 		public override string getDescription()
 		{
 			return this.helper.Translation.Get("NetDescript");
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x0000847C File Offset: 0x0000667C
+		// Token: 0x06000095 RID: 149 RVA: 0x00009640 File Offset: 0x00007840
 		public override void drawInMenu(SpriteBatch spriteBatch, Vector2 location, float scaleSize, float transparency, float layerDepth, StackDrawType drawStackNumber, Color color, bool drawShadow)
 		{
 			spriteBatch.Draw(NatInValeyNet.texture, location + new Vector2(32f, 32f), new Rectangle?(new Rectangle(0, 0, 16, 16)), Color.White * transparency, 0f, new Vector2(8f, 8f), (float)(4.0 * (double)scaleSize), SpriteEffects.None, layerDepth);
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x000084EC File Offset: 0x000066EC
+		// Token: 0x06000096 RID: 150 RVA: 0x000096B0 File Offset: 0x000078B0
 		public override void actionWhenStopBeingHeld(Farmer who)
 		{
 			base.actionWhenStopBeingHeld(who);
@@ -59,7 +59,7 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00008554 File Offset: 0x00006754
+		// Token: 0x06000097 RID: 151 RVA: 0x00009718 File Offset: 0x00007918
 		public override bool beginUsing(GameLocation location, int x, int y, Farmer who)
 		{
 			who.jitterStrength = 1f;
@@ -84,13 +84,13 @@ namespace NatureInTheValley
 			return false;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x00002479 File Offset: 0x00000679
+		// Token: 0x06000098 RID: 152 RVA: 0x000024C3 File Offset: 0x000006C3
 		public virtual int salePrice()
 		{
 			return -1;
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x000085F8 File Offset: 0x000067F8
+		// Token: 0x06000099 RID: 153 RVA: 0x000097BC File Offset: 0x000079BC
 		public override bool onRelease(GameLocation location, int x, int y, Farmer who)
 		{
 			who.stopJittering();
@@ -137,7 +137,7 @@ namespace NatureInTheValley
 			return false;
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x0000874C File Offset: 0x0000694C
+		// Token: 0x0600009A RID: 154 RVA: 0x00009910 File Offset: 0x00007B10
 		public override void tickUpdate(GameTime time, Farmer who)
 		{
 			if (!this.isHeld || !who.hasBuff("NatCSpeedN"))
@@ -165,7 +165,7 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x0000247C File Offset: 0x0000067C
+		// Token: 0x0600009B RID: 155 RVA: 0x000024C6 File Offset: 0x000006C6
 		private void EndOfUse(Farmer who)
 		{
 			who.canMove = true;
@@ -174,19 +174,19 @@ namespace NatureInTheValley
 			NatureInTheValleyEntry.TryCatch(who);
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x0000249D File Offset: 0x0000069D
+		// Token: 0x0600009C RID: 156 RVA: 0x000024E7 File Offset: 0x000006E7
 		public override bool canBeTrashed()
 		{
 			return true;
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x0000249D File Offset: 0x0000069D
+		// Token: 0x0600009D RID: 157 RVA: 0x000024E7 File Offset: 0x000006E7
 		public override bool canBeDropped()
 		{
 			return true;
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x000087EC File Offset: 0x000069EC
+		// Token: 0x060000A2 RID: 162 RVA: 0x000099B0 File Offset: 0x00007BB0
 		public NatInValeyNet()
 		{
 			base.ItemId = "NIVNet";
@@ -197,19 +197,19 @@ namespace NatureInTheValley
 			this.Stack = 1;
 		}
 
-		// Token: 0x04000040 RID: 64
+		// Token: 0x04000048 RID: 72
 		public static Texture2D texture;
 
-		// Token: 0x04000041 RID: 65
+		// Token: 0x04000049 RID: 73
 		private IModHelper helper;
 
-		// Token: 0x04000042 RID: 66
+		// Token: 0x0400004A RID: 74
 		public bool isHeld;
 
-		// Token: 0x04000043 RID: 67
+		// Token: 0x0400004B RID: 75
 		private int save;
 
-		// Token: 0x04000044 RID: 68
+		// Token: 0x0400004C RID: 76
 		public int variant;
 	}
 }

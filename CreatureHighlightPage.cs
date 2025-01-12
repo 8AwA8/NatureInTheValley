@@ -9,10 +9,10 @@ using StardewValley.Menus;
 
 namespace NatureInTheValley
 {
-	// Token: 0x0200000C RID: 12
+	// Token: 0x0200000D RID: 13
 	internal class CreatureHighlightPage : IClickableMenu
 	{
-		// Token: 0x0600008C RID: 140 RVA: 0x000093D8 File Offset: 0x000075D8
+		// Token: 0x060000BA RID: 186 RVA: 0x0000A5C4 File Offset: 0x000087C4
 		public CreatureHighlightPage(Item item)
 		{
 			this.Item = item;
@@ -43,7 +43,7 @@ namespace NatureInTheValley
 			base.initializeUpperRightCloseButton();
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x00009668 File Offset: 0x00007868
+		// Token: 0x060000BB RID: 187 RVA: 0x0000A854 File Offset: 0x00008A54
 		public override void draw(SpriteBatch b)
 		{
 			if (!Game1.options.showMenuBackground)
@@ -162,13 +162,13 @@ namespace NatureInTheValley
 			base.drawMouse(b, false, -1);
 		}
 
-		// Token: 0x0600008E RID: 142 RVA: 0x000024E7 File Offset: 0x000006E7
+		// Token: 0x060000BC RID: 188 RVA: 0x00002531 File Offset: 0x00000731
 		public static void ExitFunction()
 		{
 			Game1.activeClickableMenu = new ClickIntoCreatureInfoMenu();
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x0000A140 File Offset: 0x00008340
+		// Token: 0x060000BD RID: 189 RVA: 0x0000B32C File Offset: 0x0000952C
 		private string CodeToLoc(string c)
 		{
 			if (c == "0")
@@ -191,10 +191,14 @@ namespace NatureInTheValley
 			{
 				return this.translation.Get("IDeserts");
 			}
+			if (Game1.getLocationFromName(c) != null)
+			{
+				return Game1.getLocationFromName(c).DisplayName;
+			}
 			return "";
 		}
 
-		// Token: 0x06000090 RID: 144 RVA: 0x0000A204 File Offset: 0x00008404
+		// Token: 0x060000BE RID: 190 RVA: 0x0000B404 File Offset: 0x00009604
 		private string GetTimeFromTime(string time)
 		{
 			int num = int.Parse(time);
@@ -220,31 +224,31 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x0400004E RID: 78
+		// Token: 0x04000056 RID: 86
 		private List<string> data = new List<string>();
 
-		// Token: 0x0400004F RID: 79
+		// Token: 0x04000057 RID: 87
 		private string name;
 
-		// Token: 0x04000050 RID: 80
+		// Token: 0x04000058 RID: 88
 		private Item Item;
 
-		// Token: 0x04000051 RID: 81
+		// Token: 0x04000059 RID: 89
 		private bool donated;
 
-		// Token: 0x04000052 RID: 82
+		// Token: 0x0400005A RID: 90
 		private string hoverText = "";
 
-		// Token: 0x04000053 RID: 83
+		// Token: 0x0400005B RID: 91
 		private int currentPage;
 
-		// Token: 0x04000054 RID: 84
+		// Token: 0x0400005C RID: 92
 		private string _title;
 
-		// Token: 0x04000055 RID: 85
+		// Token: 0x0400005D RID: 93
 		private ITranslationHelper translation;
 
-		// Token: 0x04000056 RID: 86
+		// Token: 0x0400005E RID: 94
 		private Texture2D backGround;
 	}
 }

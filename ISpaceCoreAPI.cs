@@ -5,31 +5,31 @@ using StardewValley;
 
 namespace NatureInTheValley
 {
-	// Token: 0x02000008 RID: 8
+	// Token: 0x02000009 RID: 9
 	public interface ISpaceCoreAPI
 	{
-		// Token: 0x06000075 RID: 117
+		// Token: 0x060000A3 RID: 163
 		string[] GetCustomSkills();
 
-		// Token: 0x06000076 RID: 118
+		// Token: 0x060000A4 RID: 164
 		int GetLevelForCustomSkill(Farmer farmer, string skill);
 
-		// Token: 0x06000077 RID: 119
+		// Token: 0x060000A5 RID: 165
 		int GetExperienceForCustomSkill(Farmer farmer, string skill);
 
-		// Token: 0x06000078 RID: 120
+		// Token: 0x060000A6 RID: 166
 		List<Tuple<string, int, int>> GetExperienceAndLevelsForCustomSkill(Farmer farmer);
 
-		// Token: 0x06000079 RID: 121
+		// Token: 0x060000A7 RID: 167
 		void AddExperienceForCustomSkill(Farmer farmer, string skill, int amt);
 
-		// Token: 0x0600007A RID: 122
+		// Token: 0x060000A8 RID: 168
 		int GetProfessionId(string skill, string profession);
 
-		// Token: 0x0600007B RID: 123
+		// Token: 0x060000A9 RID: 169
 		void RegisterSerializerType(Type type);
 
-		// Token: 0x0600007C RID: 124
+		// Token: 0x060000AA RID: 170
 		void RegisterCustomProperty(Type declaringType, string name, Type propType, MethodInfo getter, MethodInfo setter);
 	}
 }

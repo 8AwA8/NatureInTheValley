@@ -4,27 +4,27 @@ using Microsoft.Xna.Framework;
 
 namespace NatureInTheValley
 {
-	// Token: 0x0200000F RID: 15
+	// Token: 0x02000010 RID: 16
 	public class Model
 	{
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x060000A5 RID: 165 RVA: 0x0000256F File Offset: 0x0000076F
-		// (set) Token: 0x060000A6 RID: 166 RVA: 0x00002577 File Offset: 0x00000777
+		// (get) Token: 0x060000D3 RID: 211 RVA: 0x000025B9 File Offset: 0x000007B9
+		// (set) Token: 0x060000D4 RID: 212 RVA: 0x000025C1 File Offset: 0x000007C1
 		public List<string> locations { get; set; }
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x060000A7 RID: 167 RVA: 0x00002580 File Offset: 0x00000780
-		// (set) Token: 0x060000A8 RID: 168 RVA: 0x00002588 File Offset: 0x00000788
+		// (get) Token: 0x060000D5 RID: 213 RVA: 0x000025CA File Offset: 0x000007CA
+		// (set) Token: 0x060000D6 RID: 214 RVA: 0x000025D2 File Offset: 0x000007D2
 		public List<int> frames { get; set; }
 
 		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x060000AA RID: 170 RVA: 0x00002591 File Offset: 0x00000791
-		// (set) Token: 0x060000AB RID: 171 RVA: 0x00002599 File Offset: 0x00000799
+		// (get) Token: 0x060000D8 RID: 216 RVA: 0x000025DB File Offset: 0x000007DB
+		// (set) Token: 0x060000D9 RID: 217 RVA: 0x000025E3 File Offset: 0x000007E3
 		public List<string> creatures { get; set; }
 
 		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x060000AC RID: 172 RVA: 0x000025A2 File Offset: 0x000007A2
-		// (set) Token: 0x060000AD RID: 173 RVA: 0x000025AA File Offset: 0x000007AA
+		// (get) Token: 0x060000DA RID: 218 RVA: 0x000025EC File Offset: 0x000007EC
+		// (set) Token: 0x060000DB RID: 219 RVA: 0x000025F4 File Offset: 0x000007F4
 		public List<Vector2> positions { get; set; }
 	}
 }

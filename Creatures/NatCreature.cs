@@ -8,24 +8,24 @@ using xTile.Dimensions;
 
 namespace Creatures
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000007 RID: 7
 	public class NatCreature
 	{
-		// Token: 0x06000055 RID: 85 RVA: 0x000078C0 File Offset: 0x00005AC0
+		// Token: 0x06000083 RID: 131 RVA: 0x00008A74 File Offset: 0x00006C74
 		public virtual void Draw(SpriteBatch b)
 		{
 			Microsoft.Xna.Framework.Rectangle boundingBox = this.GetBoundingBox();
 			this.Sprite.draw(b, Game1.GlobalToLocal(Game1.viewport, this.Position) + new Vector2((float)this.Sprite.SpriteWidth / 2f, (float)((!this.IsGrounded) ? -90 : 0)), (float)boundingBox.Center.Y / 10000f, 0, this.heightOffGround, Color.White, false, this.scale * 1.2f, 0f, false);
 		}
 
-		// Token: 0x06000056 RID: 86 RVA: 0x0000794C File Offset: 0x00005B4C
+		// Token: 0x06000084 RID: 132 RVA: 0x00008B00 File Offset: 0x00006D00
 		public Vector2 getLocalPosition(xTile.Dimensions.Rectangle viewport)
 		{
 			Vector2 position = this.Position;
 			return new Vector2(position.X - (float)viewport.X, position.Y - (float)viewport.Y);
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x00007984 File Offset: 0x00005B84
+		// Token: 0x06000085 RID: 133 RVA: 0x00008B38 File Offset: 0x00006D38
 		public virtual Microsoft.Xna.Framework.Rectangle GetBoundingBox()
 		{
 			if (this.Sprite == null)
@@ -37,7 +37,7 @@ namespace Creatures
 			return new Microsoft.Xna.Framework.Rectangle((int)position.X + 8, (int)position.Y + 16, width, 32);
 		}
 
-		// Token: 0x06000058 RID: 88 RVA: 0x000079D4 File Offset: 0x00005BD4
+		// Token: 0x06000086 RID: 134 RVA: 0x00008B88 File Offset: 0x00006D88
 		public virtual void DrawShadow(SpriteBatch b)
 		{
 			if (this.scale < 0.9f)
@@ -47,7 +47,7 @@ namespace Creatures
 			b.Draw(Game1.shadowTexture, Game1.GlobalToLocal(Game1.viewport, this.Position) + new Vector2((float)this.Sprite.SpriteWidth * 1.4f + (float)this.shadowXOffset, (float)this.Sprite.SpriteHeight * 1.1f + (float)this.shadowYOffset), new Microsoft.Xna.Framework.Rectangle?(Game1.shadowTexture.Bounds), Color.White, 0f, new Vector2((float)Game1.shadowTexture.Bounds.Center.X, (float)Game1.shadowTexture.Bounds.Center.Y), 2f, SpriteEffects.None, Math.Max(0f, (float)this.GetBoundingBox().Center.Y / 10000f) - 1E-06f);
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x00007AC8 File Offset: 0x00005CC8
+		// Token: 0x06000087 RID: 135 RVA: 0x00008C7C File Offset: 0x00006E7C
 		public virtual void Update(GameTime time)
 		{
 			this.jumpTime += time.ElapsedGameTime.Milliseconds;
@@ -128,7 +128,7 @@ namespace Creatures
 			}
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x00007DEC File Offset: 0x00005FEC
+		// Token: 0x06000088 RID: 136 RVA: 0x00008FA0 File Offset: 0x000071A0
 		public virtual void UpdateAnim(GameTime time)
 		{
 			if (this.isRunning)
@@ -172,7 +172,7 @@ namespace Creatures
 			}
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00007F04 File Offset: 0x00006104
+		// Token: 0x06000089 RID: 137 RVA: 0x000090B8 File Offset: 0x000072B8
 		public virtual bool TimeChange()
 		{
 			if (this.isStatic)
@@ -192,88 +192,48 @@ namespace Creatures
 					return true;
 				}
 			}
-			return false;
+			return this.scale < 0.09f;
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x00007F90 File Offset: 0x00006190
+		// Token: 0x0600008A RID: 138 RVA: 0x00009154 File Offset: 0x00007354
 		private bool ValidPosition(Vector2 position)
 		{
 			new Location((int)(position.X / 64f), (int)(position.Y / 64f));
 			return this.currentLocation.map != null && (this.LocalLocationCode == 3 ^ !this.currentLocation.isWaterTile((int)(position / 64f).X, (int)(position / 64f).Y)) && !this.currentLocation.IsTileOccupiedBy(new Vector2((float)((int)(position / 64f).X), (float)((int)(position / 64f).Y)), ~(CollisionMask.Characters | CollisionMask.Farmers | CollisionMask.Flooring), CollisionMask.None, false) && this.currentLocation.isTilePassable(new Vector2((float)((int)(position / 64f).X), (float)((int)(position / 64f).Y)));
 		}
 
-		// Token: 0x0600005D RID: 93 RVA: 0x0000807C File Offset: 0x0000627C
-		public NatCreature(Vector2 position, GameLocation location, string Name, int rarity, bool isGrounded, float speed, int stopTime, float scale, bool DoesRun, bool isMover, int PlayerRange, bool dangerous, List<string> seasons, int weatherCode, List<int> locationCode, int MinTime, int MaxTime, int FramesPerAnim, string textureName, int offsetShad, int localLocationCode, int offsetShadY, bool isStatic)
-		{
-			this.Sprite = new AnimatedSprite();
-			this.currentLocation = new GameLocation();
-			this.speed = 0.0032f;
-			this.desiredPos = default(Vector2);
-			this.scale = 1f;
-			this.Seasons = new List<string>();
-			this.LocationCode = new List<int>();
-			this.Position = position;
-			this.currentLocation = location;
-			this.Sprite = new AnimatedSprite(textureName);
-			this.Sprite.SpriteHeight = 32;
-			this.Sprite.SpriteWidth = 32;
-			this.Sprite.framesPerAnimation = FramesPerAnim;
-			this.IsGrounded = isGrounded;
-			this.speed = speed;
-			this.scale = scale;
-			this.stopTime = stopTime;
-			this.Rarity = rarity;
-			this.name = Name;
-			this.DoesRun = DoesRun;
-			this.isMover = isMover;
-			this.PlayerRange = PlayerRange;
-			this.savedRange = PlayerRange;
-			this.Dangerous = dangerous;
-			this.Seasons.Clear();
-			this.Seasons.AddRange(seasons);
-			this.WeatherCode = weatherCode;
-			this.LocationCode.AddRange(locationCode);
-			this.MinTime = MinTime;
-			this.MaxTime = MaxTime;
-			this.shadowXOffset = offsetShad;
-			this.LocalLocationCode = localLocationCode;
-			this.shadowYOffset = offsetShadY;
-			this.isStatic = isStatic;
-			this.Sprite.UpdateSourceRect();
-		}
-
-		// Token: 0x0600005E RID: 94 RVA: 0x000023D2 File Offset: 0x000005D2
+		// Token: 0x0600008B RID: 139 RVA: 0x0000241C File Offset: 0x0000061C
 		public GameLocation GetLocation()
 		{
 			return this.currentLocation;
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x000023DA File Offset: 0x000005DA
+		// Token: 0x0600008C RID: 140 RVA: 0x00002424 File Offset: 0x00000624
 		public void SetLocation(GameLocation l)
 		{
 			this.currentLocation = l;
 		}
 
-		// Token: 0x06000060 RID: 96 RVA: 0x000023E3 File Offset: 0x000005E3
+		// Token: 0x0600008D RID: 141 RVA: 0x0000242D File Offset: 0x0000062D
 		public int GetFrame()
 		{
 			return this.Sprite.currentFrame;
 		}
 
-		// Token: 0x06000061 RID: 97 RVA: 0x000023F0 File Offset: 0x000005F0
+		// Token: 0x0600008E RID: 142 RVA: 0x0000243A File Offset: 0x0000063A
 		public void SetSprite(int i)
 		{
 			this.Sprite.currentFrame = i;
 			this.Sprite.UpdateSourceRect();
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00002409 File Offset: 0x00000609
+		// Token: 0x0600008F RID: 143 RVA: 0x00002453 File Offset: 0x00000653
 		public Vector2 GetEffectivePosition()
 		{
 			return this.Position + new Vector2(8f, 8f) * 1.2f * this.scale;
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x000081E0 File Offset: 0x000063E0
+		// Token: 0x06000090 RID: 144 RVA: 0x00009240 File Offset: 0x00007440
 		private Vector2 GetComplexDesiredForFarmer(Farmer farmer)
 		{
 			if (Vector2.Distance(farmer.Position, this.Position) < 128f)
@@ -333,100 +293,140 @@ namespace Creatures
 			}
 		}
 
-		// Token: 0x04000020 RID: 32
-		public float speed;
-
-		// Token: 0x04000021 RID: 33
-		public int stopTime;
-
-		// Token: 0x04000022 RID: 34
-		public int jumpTime;
-
-		// Token: 0x04000023 RID: 35
-		public float scale;
-
-		// Token: 0x04000024 RID: 36
-		private int LifeTime;
-
-		// Token: 0x04000025 RID: 37
-		public int shadowXOffset;
-
-		// Token: 0x04000026 RID: 38
-		public string name;
-
-		// Token: 0x04000027 RID: 39
-		public int LocalLocationCode;
+		// Token: 0x06000091 RID: 145 RVA: 0x000094DC File Offset: 0x000076DC
+		public NatCreature(Vector2 position, GameLocation location, string Name, int rarity, bool isGrounded, float speed, int stopTime, float scale, bool DoesRun, bool isMover, int PlayerRange, bool dangerous, List<string> seasons, int weatherCode, List<string> locationCode, int MinTime, int MaxTime, int FramesPerAnim, string textureName, int offsetShad, int localLocationCode, int offsetShadY, bool isStatic)
+		{
+			this.Sprite = new AnimatedSprite();
+			this.currentLocation = new GameLocation();
+			this.speed = 0.0032f;
+			this.desiredPos = default(Vector2);
+			this.scale = 1f;
+			this.Seasons = new List<string>();
+			this.LocationCode = new List<string>();
+			this.Position = position;
+			this.currentLocation = location;
+			this.Sprite = new AnimatedSprite(textureName);
+			this.Sprite.SpriteHeight = 32;
+			this.Sprite.SpriteWidth = 32;
+			this.Sprite.framesPerAnimation = FramesPerAnim;
+			this.IsGrounded = isGrounded;
+			this.speed = speed;
+			this.scale = scale;
+			this.stopTime = stopTime;
+			this.Rarity = rarity;
+			this.name = Name;
+			this.DoesRun = DoesRun;
+			this.isMover = isMover;
+			this.PlayerRange = PlayerRange;
+			this.savedRange = PlayerRange;
+			this.Dangerous = dangerous;
+			this.Seasons.Clear();
+			this.Seasons.AddRange(seasons);
+			this.WeatherCode = weatherCode;
+			this.LocationCode.AddRange(locationCode);
+			this.MinTime = MinTime;
+			this.MaxTime = MaxTime;
+			this.shadowXOffset = offsetShad;
+			this.LocalLocationCode = localLocationCode;
+			this.shadowYOffset = offsetShadY;
+			this.isStatic = isStatic;
+			this.Sprite.UpdateSourceRect();
+		}
 
 		// Token: 0x04000028 RID: 40
-		public int savedRange;
+		public float speed;
 
 		// Token: 0x04000029 RID: 41
-		public int shadowYOffset;
+		public int stopTime;
 
 		// Token: 0x0400002A RID: 42
-		public bool chasing;
+		public int jumpTime;
 
 		// Token: 0x0400002B RID: 43
-		private int oscillations;
+		public float scale;
 
 		// Token: 0x0400002C RID: 44
-		public bool isStatic;
+		private int LifeTime;
 
 		// Token: 0x0400002D RID: 45
-		protected AnimatedSprite Sprite;
+		public int shadowXOffset;
 
 		// Token: 0x0400002E RID: 46
-		public int heightOffGround;
+		public string name;
 
 		// Token: 0x0400002F RID: 47
-		public bool isMover;
+		public int LocalLocationCode;
 
 		// Token: 0x04000030 RID: 48
-		public bool IsEmoting;
+		public int savedRange;
 
 		// Token: 0x04000031 RID: 49
-		public bool DoesRun;
+		public int shadowYOffset;
 
 		// Token: 0x04000032 RID: 50
-		public bool IsGrounded;
+		public bool chasing;
 
 		// Token: 0x04000033 RID: 51
-		protected GameLocation currentLocation;
+		private int oscillations;
 
 		// Token: 0x04000034 RID: 52
-		public Vector2 desiredPos;
+		public bool isStatic;
 
 		// Token: 0x04000035 RID: 53
-		public bool isMoving;
+		protected AnimatedSprite Sprite;
 
 		// Token: 0x04000036 RID: 54
-		public List<string> Seasons;
+		public int heightOffGround;
 
 		// Token: 0x04000037 RID: 55
-		public int WeatherCode;
+		public bool isMover;
 
 		// Token: 0x04000038 RID: 56
-		public int Rarity;
+		public bool IsEmoting;
 
 		// Token: 0x04000039 RID: 57
-		public int PlayerRange;
+		public bool DoesRun;
 
 		// Token: 0x0400003A RID: 58
-		public bool Dangerous;
+		public bool IsGrounded;
 
 		// Token: 0x0400003B RID: 59
-		public int MinTime;
+		protected GameLocation currentLocation;
 
 		// Token: 0x0400003C RID: 60
-		public int MaxTime;
+		public Vector2 desiredPos;
 
 		// Token: 0x0400003D RID: 61
-		public bool isRunning;
+		public bool isMoving;
 
 		// Token: 0x0400003E RID: 62
-		public List<int> LocationCode;
+		public List<string> Seasons;
 
 		// Token: 0x0400003F RID: 63
+		public int WeatherCode;
+
+		// Token: 0x04000040 RID: 64
+		public int Rarity;
+
+		// Token: 0x04000041 RID: 65
+		public int PlayerRange;
+
+		// Token: 0x04000042 RID: 66
+		public bool Dangerous;
+
+		// Token: 0x04000043 RID: 67
+		public int MinTime;
+
+		// Token: 0x04000044 RID: 68
+		public int MaxTime;
+
+		// Token: 0x04000045 RID: 69
+		public bool isRunning;
+
+		// Token: 0x04000046 RID: 70
 		public Vector2 Position;
+
+		// Token: 0x04000047 RID: 71
+		public List<string> LocationCode;
 	}
 }

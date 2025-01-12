@@ -12,10 +12,10 @@ using StardewValley.Menus;
 
 namespace NatureInTheValley
 {
-	// Token: 0x0200000A RID: 10
+	// Token: 0x0200000B RID: 11
 	internal class ClickIntoCreatureInfoMenu : IClickableMenu
 	{
-		// Token: 0x06000084 RID: 132 RVA: 0x00008D60 File Offset: 0x00006F60
+		// Token: 0x060000B2 RID: 178 RVA: 0x00009F4C File Offset: 0x0000814C
 		public ClickIntoCreatureInfoMenu()
 		{
 			this._title = "Creatures In The Valley";
@@ -62,7 +62,7 @@ namespace NatureInTheValley
 			base.initializeUpperRightCloseButton();
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x000090E0 File Offset: 0x000072E0
+		// Token: 0x060000B3 RID: 179 RVA: 0x0000A2CC File Offset: 0x000084CC
 		public override void receiveLeftClick(int x, int y, bool playSound = true)
 		{
 			base.receiveLeftClick(x, y, true);
@@ -77,7 +77,7 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00009174 File Offset: 0x00007374
+		// Token: 0x060000B4 RID: 180 RVA: 0x0000A360 File Offset: 0x00008560
 		public override void draw(SpriteBatch b)
 		{
 			if (!Game1.options.showMenuBackground)
@@ -103,7 +103,7 @@ namespace NatureInTheValley
 			base.drawMouse(b, false, -1);
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x0000937C File Offset: 0x0000757C
+		// Token: 0x060000B5 RID: 181 RVA: 0x0000A568 File Offset: 0x00008768
 		public static void ExitFunction()
 		{
 			if (Game1.currentLocation.Name == "NIVInnerInsec")
@@ -112,19 +112,19 @@ namespace NatureInTheValley
 			}
 		}
 
-		// Token: 0x04000046 RID: 70
+		// Token: 0x0400004E RID: 78
 		private string hoverText = "";
 
-		// Token: 0x04000047 RID: 71
+		// Token: 0x0400004F RID: 79
 		public List<ClickableTextureComponent> Collection = new List<ClickableTextureComponent>();
 
-		// Token: 0x04000048 RID: 72
+		// Token: 0x04000050 RID: 80
 		private int currentPage;
 
-		// Token: 0x04000049 RID: 73
+		// Token: 0x04000051 RID: 81
 		private string _title;
 
-		// Token: 0x0400004A RID: 74
+		// Token: 0x04000052 RID: 82
 		private readonly bool IsAndroid = Constants.TargetPlatform == GamePlatform.Android;
 	}
 }
